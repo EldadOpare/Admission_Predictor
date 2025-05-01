@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-import pickle
+import joblib
 import numpy as np
 import random
 from utils import preprocess_input
@@ -31,8 +31,7 @@ uploaded_file = st.file_uploader("📤 Upload CSV File", type="csv")
 
 @st.cache_resource
 def load_model():
-    with open("model/final_admission_model.pkl", "rb") as f:
-        return pickle.load(f)
+    return joblib.load("model/final_admission_model.pkl")
 
 model = load_model()
 
